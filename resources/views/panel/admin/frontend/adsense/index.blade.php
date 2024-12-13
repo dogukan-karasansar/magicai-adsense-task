@@ -58,13 +58,23 @@
                                 <td>{{$ad->user->name}}</td>
                                 <td>{{$ad->ad_client}}</td>
                                 <td>{{$ad->ad_slot}}</td>
-                                <td>{{$ad->ad_format}}</td>
-                                <td>{{$ad->ad_status}}</td>
-                                <td>{{$ad->ad_responsive}}</td>
                                 <td>
-                                    <a href="{{route('dashboard.admin.frontend.faq.createOrUpdate', $ad->id)}}"
+                                    {!! $ad->generateFormatBadge() !!}
+                                </td>
+                                <td>
+                                    {!! $ad->generateStatusBadge() !!}
+                                </td>
+                                <td>
+                                    {!! $ad->generateResponsiveBadge() !!}
+                                </td>
+                                <td>
+                                    {{-- copy code --}}
+                                    <a href="#" onclick="copyToClipboard('{{$ad->generateAdSenseCode()}}')"
+                                        class="btn btn-primary">{{__('Copy')}}</a>
+                                    {{-- edit and delete --}}
+                                    <a href="{{route('dashboard.admin.frontend.adsense.createOrUpdate', $ad->id)}}"
                                         class="btn btn-primary">{{__('Edit')}}</a>
-                                    <a href="{{route('dashboard.admin.frontend.faq.delete', $ad->id)}}"
+                                    <a href="{{route('dashboard.admin.frontend.adsense.delete', $ad->id)}}"
                                         class="btn btn-danger">{{__('Delete')}}</a>
                                 </td>
                             </tr>

@@ -31,24 +31,50 @@ class Adsense extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function generateStatusBadge()
+    {
+        $status = $this->ad_status;
+
+        return match ($status) {
+            AdStatus::PUBLISHED => '<span class="badge bg-green-500">Published</span>',
+            AdStatus::DRAFT => '<span class="badge bg-yellow-500">Draft</span>',
+            AdStatus::ARCHIVED => '<span class="badge bg-red-500">Archived</span>',
+            default => '<span class="badge">Unknown</span>',
+        };
+    }
+
+    public function generateFormatBadge()
+    {
+        $format = $this->ad_format;
+
+        return match ($format) {
+            AdFormat::AUTO => '<span class="badge">Auto</span>',
+            AdFormat::RECTANGLE => '<span class="badge">Rectangle</span>',
+            AdFormat::BANNER => '<span class="badge">Banner</span>',
+            AdFormat::VERTICAL => '<span class="badge">Vertical</span>',
+            default => '<span class="badge">Unknown</span>',
+        };
+    }
+
+    public function generateResponsiveBadge()
+    {
+        return $this->ad_responsive
+            ? '<span class="badge bg-yellow-500">Responsive</span>'
+            : '<span class="badge bg-red-500">Non-Responsive</span>';
+    }
+
     public function generateAdSenseCode()
     {
-        $adFormat = AdFormat::from($this->ad_format);
-
         $adBaseEndpoint = config('services.google.adsense.base_endpoint');
-        $adClient = $this->ad_client;
-        $adSlot = $this->ad_slot;
-        $adResponsive = $this->ad_responsive ? 'true' : 'false';
-        
 
         $adSenseCode = <<<EOT
             <script async src="$adBaseEndpoint"></script>
             <ins class="adsbygoogle"
                 style="display:block"
-                data-ad-client="$adClient"
-                data-ad-slot="$adSlot"
-                data-ad-format="$adFormat"
-                data-full-width-responsive="$adResponsive"></ins>
+                data-ad-client="{$this->ad_client}"
+                data-ad-slot="{$this->ad_slot}"
+                data-ad-format="{$this->ad_format->value}"
+                data-full-width-responsive="{$this->ad_responsive}"></ins>
             <script>
                     (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
