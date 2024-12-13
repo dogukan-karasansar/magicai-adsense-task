@@ -33,7 +33,7 @@
                     New</a>
 
                 @else
-                <a class="btn btn-primary" href="{{route('dashboard.admin.frontend.faq.createOrUpdate')}}">Add New</a>
+                <a class="btn btn-primary" href="{{route('dashboard.admin.frontend.adsense.createOrUpdate')}}">Add New</a>
 
                 @endif
             </div>
