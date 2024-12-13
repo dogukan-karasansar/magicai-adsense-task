@@ -39,6 +39,10 @@ return [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
         'redirect' => '/google/callback',
+
+        'adsense' => [
+            'base_endpoint' => env('GOOGLE_ADSENSE_BASE_ENDPOINT'),
+        ],
     ],
     'facebook' => [
         'client_id' => env('FACEBOOK_CLIENT_ID'),
