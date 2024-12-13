@@ -270,6 +270,9 @@
                                 <a class="dropdown-item {{activeRoute('dashboard.admin.frontend.faq.index')}}" href="{{route('dashboard.admin.frontend.faq.index')}}">
                                     {{__('F.A.Q')}}
                                 </a>
+								<a class="dropdown-item {{activeRoute('dashboard.admin.frontend.adsense.index')}}" href="{{route('dashboard.admin.frontend.adsense.index')}}">
+                                    {{__('Google Ads')}}
+                                </a>
                                 <a class="dropdown-item {{activeRoute('dashboard.admin.frontend.tools.index')}}" href="{{route('dashboard.admin.frontend.tools.index')}}">
                                     {{__('Tools Section')}}
                                 </a>

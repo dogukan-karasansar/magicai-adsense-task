@@ -12,7 +12,7 @@ use Laravel\Cashier\Subscription;
 use Laravel\Cashier\Billable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Subscriptions as SubscriptionsModel;
-
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -70,6 +70,11 @@ class User extends Authenticatable
 
     public function plan(){
         return $this->hasMany(UserOrder::class)->where('type', 'subscription')->orderBy('created_at', 'desc')->first();
+    }
+
+    public function adsenses(): HasMany
+    {
+        return $this->hasMany(Adsense::class);
     }
 
     public function activePlan(){

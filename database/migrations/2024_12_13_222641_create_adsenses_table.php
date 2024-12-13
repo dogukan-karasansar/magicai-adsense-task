@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('adsenses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('ad_client');
-            $table->string('ad_slot');
-            $table->tinyInteger('ad_format'); // adsense format enumdan gelicek
-            $table->boolean('ad_responsive')->default(true);
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // adsense creator
+            $table->string('ad_client'); // adsense client id
+            $table->string('ad_slot'); // adsense identifier
+            $table->tinyInteger('ad_format'); // adsense format from enum
+            $table->tinyInteger('ad_status'); // adsense status from enum
+            $table->boolean('ad_responsive')->default(true); // adsense responsive
             $table->timestamps();
         });
     }

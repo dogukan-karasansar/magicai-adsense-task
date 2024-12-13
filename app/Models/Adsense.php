@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\Adsense\AdFormat;
+use App\Enums\Adsense\AdStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,12 +16,14 @@ class Adsense extends Model
         'ad_client',
         'ad_slot',
         'ad_format',
+        'ad_status',
         'ad_responsive',
     ];
 
     protected $casts = [
         'ad_responsive' => 'boolean',
         'ad_format' => AdFormat::class,
+        'ad_status' => AdStatus::class,
     ];
 
     public function user()

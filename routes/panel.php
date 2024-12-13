@@ -267,10 +267,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
                 //Adsense
                 Route::prefix('adsense')->name('adsense.')->group(function () {
-                    Route::get('/', [AdsenseController::class, 'adsenseList'])->name('list');
-                    Route::get('/add-or-update/{id?}', [AdminController::class, 'adsenseAddOrUpdate'])->name('addOrUpdate');
-                    Route::get('/delete/{id?}', [AdminController::class, 'adsenseDelete'])->name('delete');
-                    Route::post('/save', [AdminController::class, 'adsenseSave']);
+                    Route::get('/', [AdsenseController::class, 'index'])->name('index');
+                    Route::get('/create-or-update/{id?}', [AdsenseController::class, 'createOrUpdate'])->name('createOrUpdate');
+                    Route::get('/action/delete/{id}', [AdsenseController::class, 'delete'])->name('delete');
+                    Route::post('/action/save', [AdsenseController::class, 'createOrUpdateSave']);
                 });
 
                 //Tools Section
