@@ -1,5 +1,5 @@
 @extends('panel.layout.app')
-@section('title', __('F.A.Q'))
+@section('title', __('Google Adsense'))
 
 @section('content')
 <div class="page-header">
