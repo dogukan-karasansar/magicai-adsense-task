@@ -43,6 +43,8 @@
                         <thead>
                             <tr>
                                 <th>{{__('User')}}</th>
+                                <th>{{__('Ad Site')}}</th>
+                                <th>{{__('Ad Position')}}</th>
                                 <th>{{__('Ad Client')}}</th>
                                 <th>{{__('Ad Slot')}}</th>
                                 <th>{{__('Ad Format')}}</th>
@@ -56,6 +58,10 @@
                             @foreach($adsenses as $ad)
                             <tr>
                                 <td>{{$ad->user->name}}</td>
+                                <td>{{substr($ad->ad_site_url, 12)}}</td>
+                                <td>
+                                    {!! $ad->generatePositionBadge() !!}
+                                </td>
                                 <td>{{$ad->ad_client}}</td>
                                 <td>{{$ad->ad_slot}}</td>
                                 <td>
@@ -69,7 +75,7 @@
                                 </td>
                                 <td>
                                     {{-- copy code --}}
-                                    <a href="#" onclick="copyToClipboard('{{$ad->generateAdSenseCode()}}')"
+                                    <a onclick="copyToClipboard(`{{$ad->generateAdSenseCode()}}`)"
                                         class="btn btn-primary">{{__('Copy')}}</a>
                                     {{-- edit and delete --}}
                                     <a href="{{route('dashboard.admin.frontend.adsense.createOrUpdate', $ad->id)}}"

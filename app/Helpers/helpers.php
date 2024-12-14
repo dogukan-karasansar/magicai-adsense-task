@@ -1,5 +1,8 @@
 <?php
 
+use App\Enums\Adsense\AdFormat;
+use App\Enums\Adsense\AdPosition;
+use App\Enums\Adsense\AdStatus;
 use App\Http\Controllers\PaymentController;
 
 use App\Models\Activity;
@@ -19,6 +22,26 @@ function activeRoute($route_name){
         return 'active';
     }
 }
+
+if(!function_exists('AdPosition')){
+    function AdPosition(){
+        return AdPosition::toArray();
+    }
+}
+
+
+if(!function_exists('AdFormat')){
+    function AdFormat(){
+        return AdFormat::toArray();
+    }
+}
+
+if(!function_exists('AdStatus')){
+    function AdStatus(){
+        return AdStatus::toArray();
+    }
+}
+
 
 function activeRouteBulk($route_names){
     $current_route = Route::currentRouteName();
