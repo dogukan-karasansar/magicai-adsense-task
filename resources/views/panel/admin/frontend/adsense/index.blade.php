@@ -32,7 +32,12 @@
                         d="M10 2.5a7.5 7.5 0 100 15 7.5 7.5 0 000-15zM10 1a9 9 0 110 18 9 9 0 010-18zm0 3a1 1 0 011 1v4a1 1 0 01-2 0V5a1 1 0 011-1zm0 8a1 1 0 011 1v1a1 1 0 01-2 0v-1a1 1 0 011-1z"
                         clip-rule="evenodd"></path>
                 </svg>
-                <p class="mt-3">{{__('You can add Google Adsense code to your website.')}}</p>
+                <p class="mt-3">
+                    {{__('You can add Google Adsense code to your website in another placement or first add your web
+                    site')}}
+                    <a href="https://adsense.google.com/intl/tr_tr/start/"
+                        class="text-yellow-600 underline">{{__('Google Addsense')}}</a>.
+                </p>
             </div>
         </div>
         <div class="card">
